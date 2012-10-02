@@ -2,6 +2,7 @@
 import zipfile
 import sys
 import time
+import os
 
 def add_file(mode, zipfilename, file, path):
         myzip = zipfile.ZipFile(zipfilename, mode)
@@ -27,15 +28,16 @@ def run():
         try:
                 with open(myfile) as inputfile:
                         try:
-                                with open(myzipfile) as f:
-                                        f.close()
+                                if os.path.exists(myzipfile):
                                         print "[*] Appending '%s' to '%s' as '%s'" % (myfile, myzipfile, path)
                                         add_file('a', myzipfile, inputfile, path)
-                
+                        
+                                else:
+                                        print "[*] Creating new zipfile '%s'" % myzipfile
+                                        print "[*] Appending '%s' to '%s' as '%s'" % (myfile, myzipfile, path)
+                                        add_file('w', myzipfile, inputfile, path)
                         except IOError as e:
-                                print "[*] Creating new zipfile '%s'" % myzipfile
-                                print "[*] Appending '%s' to '%s' as '%s'" % (myfile, myzipfile, path)
-                                add_file('w', myzipfile, inputfile, path)
+                                print e
                                 
         except IOError as e:
                 print e
