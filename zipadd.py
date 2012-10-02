@@ -21,10 +21,6 @@ def run():
         myfile = sys.argv[2]
         path = sys.argv[3]
 
-        zi = zipfile.ZipInfo()
-        zi.filename = path 
-        zi.date_time = time.time()
-
         try:
                 with open(myfile) as inputfile:
                         try:
