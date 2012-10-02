@@ -5,5 +5,8 @@ WinZip 16.5 will warn you about this as a security risk in the GUI and the comma
 Mileage may vary with different zip implementations and versions.
 
 Ignores periods:
+
 Nix Unzip 6.0
+
 7Zip 4.65 
+Windows XP Inbuilt ZIP functionality (also raises a security error if you use backslashes \..\ etc)
